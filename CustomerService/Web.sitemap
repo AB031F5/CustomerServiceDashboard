@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="" title="Complaints" description="" roles ="*">
+  <siteMapNode url="" title="Data" description="Complaints Page" roles ="Admin,agent">
+    <siteMapNode url="~/agent/Upload.aspx" title="Complaints" description="Complaints Page" roles="*"  />
+	  <siteMapNode url="~/agent/Messages.aspx" title="Messages" description="Customer Messages" roles="*"  />
+	  <siteMapNode url="~/agent/Reports.aspx" title="Reports" description="Customer Reports" roles="*"  />
+	  <siteMapNode url="~/agent/MobilemoneyBalance.aspx" title="MM Balance" description="Page to display MM balances" roles="*"  />
+	  <siteMapNode url="~/agent/TransactionsSummary.aspx" title="Txns Summary" description="Page to display Summary of bill payment transactions" roles="*"  />
+    <siteMapNode url="~/agent/Errors.aspx" title="Errors" description="Upload Errors" roles="*"  />
+  </siteMapNode>
+  <siteMapNode url="" title="Maintenance" description="Accounnt Maintenace Page" roles ="Admin,amaint">
+    <siteMapNode url="~/AccMaintenance/CompletedInstructions.aspx" title="Instructions" description="Instructions Page" roles="*"  />
+	  <siteMapNode url="~/AccMaintenance/SendMessages.aspx" title="Messages" description="Instructions Messages" roles="*"  />
+    <siteMapNode url="~/AccMaintenance/SendErrors.aspx" title="Errors" description="Instructions Errors" roles="*"  />
+  </siteMapNode>
+  <siteMapNode url="" title="Settings" description="Admin Page" roles ="Admin">
+      <siteMapNode url ="~/Admin/Addapp_User.aspx" title="Add User" description="Users Page" roles="Admin"/>
+      <siteMapNode url ="" title="Amend User" description="Amendment Page" roles="Admin">
+        <siteMapNode url ="~/Admin/Amend/Amend_User.aspx" title="Password" description="Password Change Page" roles="*" />
+        <siteMapNode url ="" title="Amend User" description="Amendment Page" roles="*" />
+        <siteMapNode url ="" title="Amend User" description="Amendment Page" roles="*" />
+      </siteMapNode>
+      <siteMapNode url ="~/Admin/Delete_User.aspx" title="Delete User" description="Deletion Page" roles="Admin"/>
+    </siteMapNode>   
+    <siteMapNode url="~/PWDChange/Password_Change.aspx" title="Security" description="Password Change Page" roles="Admin,agent"  />
+  </siteMapNode>
+</siteMap>
