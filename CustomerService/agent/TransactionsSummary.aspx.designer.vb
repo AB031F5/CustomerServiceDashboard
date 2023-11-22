@@ -32,15 +32,6 @@ Partial Public Class TransactionsSummary
     Protected WithEvents lblerroratmsg As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ValidationSummary1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
-
-    '''<summary>
     '''UpdatePanel1 control.
     '''</summary>
     '''<remarks>
@@ -77,13 +68,31 @@ Partial Public Class TransactionsSummary
     Protected WithEvents searchType As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''download control.
+    '''startddate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents download As Global.System.Web.UI.WebControls.CheckBox
+    Protected WithEvents startddate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''enddate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents enddate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Report control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Report As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''getMNO control.
@@ -93,6 +102,15 @@ Partial Public Class TransactionsSummary
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents getMNO As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''ValidationSummary1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
 
     '''<summary>
     '''PlaceHolder1 control.

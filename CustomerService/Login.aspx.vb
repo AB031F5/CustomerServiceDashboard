@@ -12,6 +12,7 @@ Public Class Login
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
             If Me.Page.User.Identity.IsAuthenticated Then
+                ViewStateUserKey = Session.SessionID
                 FormsAuthentication.SignOut()
                 Response.Redirect("~/Login.aspx")
             End If
@@ -46,7 +47,8 @@ Public Class Login
                     Dim usid As Integer = CInt(dtlogin.Rows(0)("User_ID"))
                     Dim resetflg As String = dtlogin.Rows(0)("Reset_Flg").ToString()
                     Dim usname As String = dtlogin.Rows(0)("User_Name").ToString()
-                    Dim name As String = dtlogin.Rows(0)("First_Name").ToString()
+                    Dim fName As String = dtlogin.Rows(0)("First_Name").ToString()
+                    Dim lName As String = dtlogin.Rows(0)("Last_Name").ToString()
                     Dim pwdstring As String = dtlogin.Rows(0)("Password").ToString()
                     Dim uprof As String = dtlogin.Rows(0)("User_Profile").ToString()
                     Dim llogdt As Date = CDate(dtlogin.Rows(0)("Lastpwdchangedate"))
@@ -62,14 +64,19 @@ Public Class Login
                             login_status.Parameters.AddWithValue("logsts", 1)
                             login_status.ExecuteScalar()
 
-                            FormsAuthentication.SetAuthCookie(Login1.UserName, True)
+                            FormsAuthentication.SetAuthCookie(logged_user, True)
                             Session("User_Name") = usname
                             Session("User_Profile") = uprof
                             Session("User_ID") = usid
                             Session("Reset_Flag") = resetflg
                             Session("Lastpwdchangedate") = llogdt
-                            Session("Name") = name
-                            Dim ticket As New FormsAuthenticationTicket(1, name, DateTime.Now, DateTime.Now.AddMinutes(FormsAuthentication.Timeout.TotalMinutes), Login1.RememberMeSet, uprof, FormsAuthentication.FormsCookiePath)
+                            Session("Name") = fName + " " + lName
+
+                            System.Web.HttpContext.Current.Session(“MyVariable”) = “NewValue”
+                            Dim ses As String = System.Web.HttpContext.Current.Session(“MyVariable”).ToString()
+
+                            Dim sesName As String = Session("User_Name").ToString()
+                            Dim ticket As New FormsAuthenticationTicket(1, fName, DateTime.Now, DateTime.Now.AddMinutes(FormsAuthentication.Timeout.TotalMinutes), True, uprof, FormsAuthentication.FormsCookiePath)
                             Dim hash As String = FormsAuthentication.Encrypt(ticket)
                             Dim cookie As New HttpCookie(FormsAuthentication.FormsCookieName, hash)
                             cookie.HttpOnly = True
@@ -88,7 +95,7 @@ Public Class Login
                                     Response.Redirect("~/PWDChange/Password_Change.aspx", False)
                                     Context.ApplicationInstance.CompleteRequest()
                                 Else
-                                    Response.Redirect(FormsAuthentication.GetRedirectUrl(Login1.UserName, Login1.RememberMeSet), False)
+                                    Response.Redirect(FormsAuthentication.GetRedirectUrl(usname, true), False)
                                     Context.ApplicationInstance.CompleteRequest()
                                 End If
                             End If
@@ -99,7 +106,7 @@ Public Class Login
 
                     Else
                         ScriptManager.RegisterStartupScript(Me, Me.[GetType](), "Message", "<SCRIPT LANGUAGE='javascript'>alert('Username and/or password is incorrect');</script>", False)
-                        Login1.FailureText = "Username and/or password is incorrect."
+
                     End If
 
                     con.Close()
@@ -112,96 +119,8 @@ Public Class Login
         End Using
     End Sub
 
-    Protected Sub Login1_Authenticate(sender As Object, e As AuthenticateEventArgs) Handles Login1.Authenticate
-        Dim userId As Integer = 0
-        Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
-        Using con As New MySql.Data.MySqlClient.MySqlConnection(constr)
-            'Dim fing As MySql.Data.MySqlClient.MySqlDataReader
-            Dim login_cmd, login_status As New MySql.Data.MySqlClient.MySqlCommand
-            Dim logged_user As String = Login1.UserName
-            Dim logged_password As String = Login1.Password
-            Try
-                con.Open()
-                login_cmd.Connection = con
-                login_cmd.CommandText = "getlogin_user"
-                login_cmd.CommandType = CommandType.StoredProcedure
-                login_cmd.Parameters.AddWithValue("usern_var", logged_user)
-                login_cmd.Parameters.AddWithValue("flag_var", "N")
-                Using sdalogin As MySql.Data.MySqlClient.MySqlDataAdapter = New MySql.Data.MySqlClient.MySqlDataAdapter(login_cmd)
-                    Dim dtlogin As DataTable = New DataTable()
-                    sdalogin.Fill(dtlogin)
-                    If dtlogin.Rows.Count = 0 Then
-                        Login1.FailureText = "Invalid Username or password"
-                        Exit Sub
-                    End If
-                    Dim usid As Integer = CInt(dtlogin.Rows(0)("User_ID"))
-                    Dim resetflg As String = dtlogin.Rows(0)("Reset_Flg").ToString()
-                    Dim usname As String = dtlogin.Rows(0)("User_Name").ToString()
-                    Dim pwdstring As String = dtlogin.Rows(0)("Password").ToString()
-                    Dim uprof As String = dtlogin.Rows(0)("User_Profile").ToString()
-                    Dim llogdt As Date = CDate(dtlogin.Rows(0)("Lastpwdchangedate"))
-                    Dim loginstatus As Integer = CInt(dtlogin.Rows(0)("Isloggedon"))
-                    Dim flag As Boolean = Addapp_User.VerifyHash(logged_password, "SHA512", pwdstring)
-                    If usname = logged_user And flag = True Then
-                        If loginstatus = 0 Then
-                            'update status to logged in
-                            login_status.Connection = con
-                            login_status.CommandText = "Set_Loggin_Status"
-                            login_status.CommandType = CommandType.StoredProcedure
-                            login_status.Parameters.AddWithValue("usname", logged_user)
-                            login_status.Parameters.AddWithValue("logsts", 1)
-                            login_status.ExecuteScalar()
 
-                            FormsAuthentication.SetAuthCookie(Login1.UserName, True)
-                            Session("User_Name") = usname
-                            Session("User_Profile") = uprof
-                            Session("User_ID") = usid
-                            Session("Reset_Flag") = resetflg
-                            Session("Lastpwdchangedate") = llogdt
-                            Dim ticket As New FormsAuthenticationTicket(1, Login1.UserName, DateTime.Now, DateTime.Now.AddMinutes(FormsAuthentication.Timeout.TotalMinutes), Login1.RememberMeSet, uprof, FormsAuthentication.FormsCookiePath)
-                            Dim hash As String = FormsAuthentication.Encrypt(ticket)
-                            Dim cookie As New HttpCookie(FormsAuthentication.FormsCookieName, hash)
-                            cookie.HttpOnly = True
-                            cookie.Secure = FormsAuthentication.RequireSSL
-                            cookie.Path = FormsAuthentication.FormsCookiePath
-                            cookie.Domain = FormsAuthentication.CookieDomain
-                            If ticket.IsPersistent Then
-                                cookie.Expires = ticket.Expiration
-                            End If
-                            Response.Cookies.Add(cookie)
-                            If resetflg = "Y" Then
-                                Response.Redirect("~/PWDChange/Password_Change.aspx", False)
-                                Context.ApplicationInstance.CompleteRequest()
-                            Else
-                                If llogdt.Date.AddDays(30) < DateTime.Now.Date Then
-                                    Response.Redirect("~/PWDChange/Password_Change.aspx", False)
-                                    Context.ApplicationInstance.CompleteRequest()
-                                Else
-                                    Response.Redirect(FormsAuthentication.GetRedirectUrl(Login1.UserName, Login1.RememberMeSet), False)
-                                    Context.ApplicationInstance.CompleteRequest()
-                                End If
-                            End If
-                        Else
-                            Login1.FailureText = "User Already Logged in"
-                        End If
 
-                    Else
-                        Login1.FailureText = "Username and/or password is incorrect."
-                    End If
-
-                    con.Close()
-                End Using
-            Catch ex As Exception
-                ScriptManager.RegisterStartupScript(Me, Me.[GetType](), "Message", "<SCRIPT LANGUAGE='javascript'>alert('" & ex.Message & " ');</script>", False)
-            Finally
-                con.Dispose()
-            End Try
-        End Using
-    End Sub
-
-    Private Sub Login1_LoggedIn(sender As Object, e As EventArgs) Handles Login1.LoggedIn
-
-    End Sub
 
     Protected Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
         If CheckBox1.Checked = True Then
@@ -547,8 +466,8 @@ Public Class Login
                     login_status.Parameters.AddWithValue("logsts", 0)
                     login_status.ExecuteScalar()
                     con_insert.Close()
-                    Session.Clear()
-                    Session.Abandon()
+                    'Session.Clear()
+                    'Session.Abandon()
                     con_insert.Close()
                     'MessageBox.Show("User Reset Succesfully and sent by mail")
                     UserName_logout.Text = vbNullString
@@ -620,7 +539,7 @@ Public Class Login
                     login_status.ExecuteScalar()
                     con_insert.Close()
                     Session.Clear()
-                    Session.Abandon()
+                    'Session.Abandon()
                     con_insert.Close()
                     'MessageBox.Show("User Reset Succesfully and sent by mail")
                     UserName_logout.Text = vbNullString

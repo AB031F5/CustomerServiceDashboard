@@ -66,7 +66,7 @@ Public Class Upload
                             sCommand.Append(String.Join(",", Rowz))
                             sCommand.Append(";")
 
-
+                            con_insert.Open()
                             cmd_add_comms.Connection = con_insert
                             cmd_add_comms.CommandText = sCommand.ToString
                             cmd_add_comms.ExecuteNonQuery()
@@ -81,7 +81,8 @@ Public Class Upload
                 End Using
             End Using
         Else
-            lblerror.Text = "No file to upload"
+            ScriptManager.RegisterStartupScript(Me, Me.[GetType](), "Message", "<SCRIPT LANGUAGE='javascript'>alert('No file to upload');</script>", False)
+            'lblerror.Text = "No file to upload"
         End If
     End Sub
     'Private Sub processup_Click(sender As Object, e As EventArgs) Handles processup.Click
@@ -179,33 +180,31 @@ Public Class Upload
         End Using
     End Sub
 
-    Public Shared Function ConvertDataTableToHTML(ByVal dt As DataTable) As String
-        Dim html As String = "<table id='table_id' class='display' cellpadding='5' cellspacing='0' style='border: 1px solid #ccc;font-size: 9pt;font-family:Calibri; width:100%'>"
-        html += "<thead>"
-        html += "<tr>"
+    Private Function ConvertDataTableToHTML(dataTable As DataTable) As String
+        Dim htmlStringBuilder As New StringBuilder()
 
-        For i As Integer = 0 To dt.Columns.Count - 1
-            html += "<th class='tablesorter' style='background-color:#BB2647; color: white;border: 1px solid #ccc'>" & dt.Columns(i).ColumnName & "</th>"
+        htmlStringBuilder.AppendLine("<table id='table_id' class='display cell-border hover stripe' style='font-size: 11pt;font-family:Roboto; width:100%;border-radius:5px;overflow:hidden;'>")
+
+        htmlStringBuilder.AppendLine("<thead>")
+        htmlStringBuilder.AppendLine("<tr>")
+        For Each column As DataColumn In dataTable.Columns
+            htmlStringBuilder.AppendFormat("<th  class='tablesorter' style='background-color:#BB2647; color: white;border: 0.5px solid #f0f0f0'>{0}</th>", column.ColumnName)
         Next
-
-        html += "</tr>"
-        html += "</thead>"
-        html += "<tbody>"
-        For i As Integer = 0 To dt.Rows.Count - 1
-            html += "<tr>"
-
-            For j As Integer = 0 To dt.Columns.Count - 1
-                html += "<td style='width:100px;border: 1px solid #ccc'>" & dt.Rows(i)(j).ToString().ToUpper() & "</td>"
+        htmlStringBuilder.AppendLine("</tr>")
+        htmlStringBuilder.AppendLine("</thead>")
+        For Each row As DataRow In dataTable.Rows
+            htmlStringBuilder.AppendLine("<tr>")
+            For Each value As Object In row.ItemArray
+                htmlStringBuilder.AppendFormat("<td>{0}</td>", value)
             Next
-
-            html += "</tr>"
+            htmlStringBuilder.AppendLine("</tr>")
         Next
-        html += "</tbody>"
-        html += "</table>"
-        Return html
 
+        htmlStringBuilder.AppendLine("</table>")
+
+        Dim htmlString As String = htmlStringBuilder.ToString()
+        Return htmlString
     End Function
-
     Public Class Foo
         Public Property f1 As String
         Public Property f2 As String

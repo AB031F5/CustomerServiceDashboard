@@ -8,10 +8,11 @@
     <meta http-equiv="Page-Exit" content="blendTrans(Duration=0)" />
     <title>Absa Uganda Complaints Messaging - CRM</title>
     <link rel="stylesheet" type="text/css" href="~/Masterstyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Ubuntu', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -21,8 +22,8 @@
     margin: 2px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: black; 
-    color: #fff;
+    background-color: #f0f0f0; 
+    color: #1F1F1F;
     border: 1px;
     border-radius: 5px;
     font-weight: bold;
@@ -31,82 +32,72 @@
 .custom-menu-list {
     margin: 2px;
     padding: 10px 20px;
-    font-size: 16px;
-    background-color: #BB2647; /* Adjust the button color as needed */
+    font-size: 14px;
+    background-color: #800000;
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-weight: bold;
     cursor: pointer;
 }
 .custom-menu-list:hover {
     margin: 2px;
     padding: 10px 20px;
-    font-size: 16px;
-    background-color: black; /* Adjust the button color as needed */
+    font-size: 14px;
+    background-color: #1F1F1F; 
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-weight: bold;
     cursor: pointer;
 }
 .custom-menu {
-    list-style: none; /* Remove default list styling */
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Style the top-level menu items */
 .custom-menu > ul > li {
     display: inline-block;
-    margin-right: 10px; /* Adjust the right margin as needed */
+    margin-right: 10px; 
 }
 
-/* Style the top-level menu item links */
 .custom-menu > ul > li > a {
-    padding: 10px 15px; /* Adjust padding as needed */
+    padding: 10px 15px;
     text-decoration: none;
-    color: #333; /* Text color */
-    background-color: #f0f0f0; /* Background color */
-    border: 1px solid #ccc; /* Border */
-    border-radius: 5px; /* Border-radius for rounded corners */
+    color: #333; 
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     display: inline-block;
 }
 
-/* Style the top-level menu item links on hover */
 .custom-menu > ul > li > a:hover {
-    background-color: #ddd; /* Adjust hover background color */
+    background-color: #ddd; 
 }
 
-/* Style the sub-menu */
 .custom-menu ul {
     display: none;
     position: absolute;
     z-index: 1000;
 }
 
-/* Show sub-menu on hover */
 .custom-menu li:hover > ul {
     display: block;
 }
 
-/* Style the sub-menu items */
 .custom-menu ul li {
     display: block;
-    width: 150px; /* Adjust the width as needed */
+    width: 150px;
 }
 
-/* Style the sub-menu item links */
 .custom-menu ul li a {
-    padding: 8px 12px; /* Adjust padding as needed */
+    padding: 8px 12px;
     text-decoration: none;
-    color: #555; /* Text color */
-    background-color: #f8f8f8; /* Background color */
+    color: #555;
+    background-color: #f8f8f8;
 }
 
-/* Style the sub-menu item links on hover */
 .custom-menu ul li a:hover {
-    background-color: #eee; /* Adjust hover background color */
+    background-color: #eee;
 }
 
 .card {
@@ -117,15 +108,23 @@
 }
 
 .icon {
-    width: 10px; /* Adjust the icon size as needed */
-    height: 10px; /* Adjust the icon size as needed */
+    width: 10px; 
+    height: 10px;
 }
-
+.download-button {
+    margin: 2px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: darkslategrey; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
 .logout-button {
     margin: 2px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #BB2647; /* Adjust the button color as needed */
+    background-color: #BB2647; 
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -133,20 +132,34 @@
 }
 
 .logout-button:hover {
-    background-color: black; /* Adjust the button color on hover as needed */
+    background-color: black;
+}
+
+.logout {
+    margin: 2px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #800000; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout:hover {
+    background-color: black; 
 }
 .align-right {
     text-align: right;
 }
 
         .left-div {
-            flex: 1; /* Takes up available space */
+            flex: 1; 
             text-align: left;
         }
 
-        /* Styles for the second div */
         .right-div {
-            flex: 1; /* Takes up available space */
+            flex: 1; 
             text-align: right;
         }
         header {
@@ -180,7 +193,7 @@
             margin: 0 10px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #BB2647; /* Adjust the button color as needed */
+    background-color: #BB2647; 
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -194,10 +207,12 @@
         }
 
         footer {
-            background-color: #333;
-            color: #fff;
+            background-color: #f0f0f0;
+            color: #BB2647;
+            font-size:10px;
             text-align: center;
             padding: 10px;
+            font-weight: bold;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -216,11 +231,11 @@
                         <asp:MenuItemStyle CssClass="custom-menu-list" />
                         <asp:MenuItemStyle CssClass="custom-menu-list" />
                     </LevelMenuItemStyles>
-                     <StaticSelectedStyle CssClass="custom-login-name" Font-Bold="true"   />
+                     <StaticSelectedStyle CssClass="custom-login-name"   />
                     <DynamicMenuItemStyle CssClass="dropdown-item" />
                 </asp:Menu>
 
-                <div style="justify-content:center; text-align:right">
+                <div style="justify-content:center; text-align:right; margin-right:25px;" >
                     <asp:LoginView ID="LoginView2" runat="server">
 
 <%--                    <AnonymousTemplate>
@@ -231,9 +246,9 @@
                     <LoggedInTemplate>
                          <div class="align-right">
                              <div class="card">
-                                 <asp:LoginName CssClass="custom-login-name" EnableTheming="true" Font-Bold="true" Font-Size="Medium" ID="LoginName1" runat="Server" />
-                                <%--<img src="../Content/icon_logout.png" alt="Log Out Icon" class="icon">--%>
-                                <asp:Button ID="btnLogout" runat="server" Font-Bold="true" Text="LOGOUT" CssClass="logout-button" OnClientClick="return disableSubmit();" OnClick="btnLogout_Click" />
+                                <asp:LoginName CssClass="custom-login-name"  Font-Size="Medium" ID="LoginName1" runat="Server" />
+                                <%--<%--<img src="../Content/icon_logout.png" alt="Log Out Icon" class="icon">--%>
+                                <asp:Button ID="btnLogout" runat="server"  Text="Log Out" CssClass="logout" OnClientClick="return disableSubmit();" OnClick="btnLogout_Click" />
                             </div>
                         </div>
                     </LoggedInTemplate>
@@ -261,13 +276,14 @@
                     </asp:ContentPlaceHolder>
                 </div>
             </div>
-            <div id="footer">
-                Copyright &copy; Absa <script>document.write(new Date().getFullYear())</script>
-            </div>
+            
         </div>
+                
     </main>
         
     </form>
-
+    <footer>
+        Copyright &copy; Absa <script>document.write(new Date().getFullYear())</script>
+    </footer>
 </body>
 </html>

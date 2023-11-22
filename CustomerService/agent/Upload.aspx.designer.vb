@@ -23,15 +23,6 @@ Partial Public Class Upload
     Protected WithEvents ScriptManager2 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''lblerror control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblerror As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''UpdatePanel1 control.
     '''</summary>
     '''<remarks>
@@ -75,6 +66,15 @@ Partial Public Class Upload
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents refresh As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''lblerror control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblerror As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''PlaceHolder1 control.

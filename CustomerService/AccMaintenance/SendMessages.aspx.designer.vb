@@ -32,15 +32,6 @@ Partial Public Class SendMessages
     Protected WithEvents lblerroratmsg As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ValidationSummary1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
-
-    '''<summary>
     '''UpdatePanel1 control.
     '''</summary>
     '''<remarks>
@@ -156,6 +147,15 @@ Partial Public Class SendMessages
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents getlist As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''ValidationSummary1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
 
     '''<summary>
     '''PlaceHolder1 control.

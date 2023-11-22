@@ -116,6 +116,7 @@ Public Class Password_Change
             ScriptManager.RegisterStartupScript(Me, Me.[GetType](), "Message", "<SCRIPT LANGUAGE='javascript'>alert('Entered Passwords do not Match');</script>", False)
             Exit Sub
         Else
+            Dim sessUser As String = Session("User_Name").ToString()
             If Session("User_Name").ToString() <> vbNullString Then
                 Dim amendusr As String
                 amendusr = Session("User_Name").ToString()

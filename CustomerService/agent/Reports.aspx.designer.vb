@@ -32,15 +32,6 @@ Partial Public Class WebForm1
     Protected WithEvents lblerroratmsg As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ValidationSummary1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
-
-    '''<summary>
     '''UpdatePanel1 control.
     '''</summary>
     '''<remarks>
@@ -140,13 +131,13 @@ Partial Public Class WebForm1
     Protected WithEvents enddate As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''download control.
+    '''Report control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents download As Global.System.Web.UI.WebControls.CheckBox
+    Protected WithEvents Report As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''getlist control.
@@ -156,6 +147,15 @@ Partial Public Class WebForm1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents getlist As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''ValidationSummary1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
 
     '''<summary>
     '''PlaceHolder1 control.

@@ -14,7 +14,7 @@
  <asp:ScriptManager ID="ScriptManager2" runat="server" EnablePageMethods="true"></asp:ScriptManager>
 <div class=" page-holder d-flex align-items-center">
     <div class="container">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="row d-flex justify-content-center align-items-center">
             <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
 
                 <div class="pr-lg-5">
@@ -22,16 +22,16 @@
                 </div>
             </div>
             <div id="infor" class="card-body p-md-5 mx-md-4">
-                <h1 class="text-base text-danger text-uppercase mb-4">CEX Dashboard</h1>
+                <h1 class="text-base text-danger text-uppercase mb-4">CX Dashboard</h1>
                 <h2 class="mb-4">Welcome Back!</h2>
 
                 <div class ="form-outline mb-4">
-                    <asp:TextBox ID="email" required= "true" CssClass="form-control border-0 shadow form-control-lg text-base" placeholder="User Name" runat="server" ></asp:TextBox>
+                    <asp:TextBox ID="email" required= "true" CssClass="form-control border-1 form-control-lg text-base" placeholder="User Name" runat="server" ></asp:TextBox>
 
                 </div>
 
                      <div class ="form-outline mb-4">
-                    <asp:TextBox ID="pass" required= "true" TextMode="Password" CssClass="form-control border-0 shadow form-control-lg text-base" placeholder="Password" runat="server" ></asp:TextBox>
+                    <asp:TextBox ID="pass" required= "true" TextMode="Password" CssClass="form-control border-1 form-control-lg text-base" placeholder="Password" runat="server" ></asp:TextBox>
 
                 </div>
                 <div class="text-center pt-1 mb-5 pb-1">
@@ -43,59 +43,6 @@
 
 </div>
 
-            <div hidden="hidden">
-                <p>
-                    <asp:Login ID="Login1" runat="server" OnAuthenticate="Login1_Authenticate" BackColor="#F7F7DE" BorderColor="#CCCC99" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="10pt" Width="383px" BorderPadding="0" DestinationPageUrl="~/Home_RM.aspx">
-                        <LayoutTemplate>
-                            <table cellpadding="10" cellspacing="0" style="border: thin solid #CC0000; border-collapse:collapse; background-color: #9999FF;">
-                                <tr>
-                                    <td>
-                                        <table cellpadding="6" style="width:383px;">
-                                            <tr>
-                                                <td align="center" colspan="2" style="color:#FF0000; background-color:#FFFFFF; font-weight:bold; height: 35px">Log on</td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left" style="height: 35px;width:80px">
-                                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
-                                                </td>
-                                                <td style="height: 35px;width:120px">
-                                                    <asp:TextBox ID="UserName" runat="server" style="width:120px" AutoCompleteType="Disabled"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left" style="height: 35px; Width:80px;">
-                                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
-                                                </td>
-                                                <td style="height: 35px;width:120px">
-                                                    <asp:TextBox ID="Password" runat="server" style="width:120px" TextMode="Password"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    &nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center" colspan="2" style="color:Red;">
-                                                    <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="right" colspan="2">
-                                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="Login1" ShowRoundedCorner="true" ForeColor="White" BackColor="#FF6600" OnClick="LoginButton_Click" />
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </LayoutTemplate>
-                        <TitleTextStyle BackColor="#6B696B" Font-Bold="True" ForeColor="#FFFFFF" />
-                    </asp:Login>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </p>
-            </div>
             <div style="text-align: center">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" Height="43px" style="text-align: left" ValidationGroup="Login1" Width="255px" />
             </div>

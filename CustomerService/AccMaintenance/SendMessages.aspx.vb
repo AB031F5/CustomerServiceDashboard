@@ -20,41 +20,32 @@ Public Class SendMessages
         End If
     End Sub
 
-    Public Shared Function ConvertDataTableToHTML2xxxSM(ByVal dt As DataTable) As String
-        Dim html As String = "<table id='table_id2SM' class='display' cellpadding='5' cellspacing='0' style='border: 1px solid #ccc;font-size: 9pt;font-family:Calibri; width:100%'>"
-        html += "<thead>"
-        html += "<tr>"
 
-        For i As Integer = 0 To dt.Columns.Count - 1
-            html += "<th class='tablesorter' style='background-color: #B8DBFD;border: 1px solid #ccc'>" & dt.Columns(i).ColumnName & "</th>"
+    Private Function ConvertDataTableToHTML2xxxSM(dataTable As DataTable) As String
+        Dim htmlStringBuilder As New StringBuilder()
+
+        htmlStringBuilder.AppendLine("<table id='table_id2SM' class='display cell-border hover stripe' style='font-size: 11pt;font-family:Roboto; width:100%;border-radius:5px;overflow:hidden;'>")
+
+        htmlStringBuilder.AppendLine("<thead>")
+        htmlStringBuilder.AppendLine("<tr>")
+        For Each column As DataColumn In dataTable.Columns
+            htmlStringBuilder.AppendFormat("<th  class='tablesorter' style='background-color:#BB2647; color: white;border: 0.5px solid #f0f0f0'>{0}</th>", column.ColumnName)
         Next
-
-        html += "</tr>"
-        html += "</thead>"
-        html += "<tbody>"
-        For i As Integer = 0 To dt.Rows.Count - 1
-            html += "<tr>"
-
-            For j As Integer = 0 To dt.Columns.Count - 1
-                Dim widthz As String
-                If j = 3 Then
-                    widthz = "40%"
-                ElseIf j = 0 Or j = 1 Then
-                    widthz = "5%"
-                Else
-                    widthz = "10%"
-                End If
-                html += "<td style='width:" & widthz & "';border: 1px solid #ccc'>" & dt.Rows(i)(j).ToString() & "</td>"
+        htmlStringBuilder.AppendLine("</tr>")
+        htmlStringBuilder.AppendLine("</thead>")
+        For Each row As DataRow In dataTable.Rows
+            htmlStringBuilder.AppendLine("<tr>")
+            For Each value As Object In row.ItemArray
+                htmlStringBuilder.AppendFormat("<td>{0}</td>", value)
             Next
-
-            html += "</tr>"
+            htmlStringBuilder.AppendLine("</tr>")
         Next
-        html += "</tbody>"
-        html += "</table>"
-        Return html
 
+        htmlStringBuilder.AppendLine("</table>")
+
+        Dim htmlString As String = htmlStringBuilder.ToString()
+        Return htmlString
     End Function
-
     Protected Sub getlist_Click1(sender As Object, e As EventArgs) Handles getlist.Click
         Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
         Using con_get As New MySql.Data.MySqlClient.MySqlConnection(constr)

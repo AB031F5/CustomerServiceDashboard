@@ -16,7 +16,7 @@
   </siteMapNode>
   <siteMapNode url="" title="Settings" description="Admin Page" roles ="Admin">
       <siteMapNode url ="~/Admin/Addapp_User.aspx" title="Add User" description="Users Page" roles="Admin"/>
-      <siteMapNode url ="" title="Amend User" description="Amendment Page" roles="Admin">
+      <siteMapNode url ="" title="Manage" description="Amendment Page" roles="Admin">
         <siteMapNode url ="~/Admin/Amend/Amend_User.aspx" title="Password" description="Password Change Page" roles="*" />
         <siteMapNode url ="" title="Amend User" description="Amendment Page" roles="*" />
         <siteMapNode url ="" title="Amend User" description="Amendment Page" roles="*" />

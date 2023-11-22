@@ -24,7 +24,7 @@
 }
 
 .custom-dropdown {
-    width: 200px; /* Set the width as needed */
+    width: 200px; 
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -35,13 +35,38 @@
 }
 
 .custom-dropdown:hover {
-    border-color: #007bff; /* Change border color on hover */
+    border-color: #BB2647; /* Change border color on hover */
 }
 
 .custom-dropdown:focus {
     outline: none; /* Remove the focus outline if needed */
-    border-color: #007bff; /* Change border color on focus */
+    border-color: #BB2647; /* Change border color on focus */
 }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            background-color: #f0f0f0;
+            border-radius: 7px;
+            margin: 5px 5px;
+            position: sticky;
+            top: 0;
+        }
+        .left-container {
+            text-align: left;
+        }
+
+        .right-container {
+            text-align: right;
+        }
+
+
+        .box {
+            padding: 10px;
+            margin: 5px;
+        }
     </style>
         <script type="text/javascript">
             <%--$(function () {
@@ -88,33 +113,46 @@
 <div class=" page-holder d-flex align-items-center">
     <div class="container">
         <div style="text-align: left;">
-            <p style = "font-size:x-large; color: #800000;"><strong>Complaints</strong></p>
-            <br />
-            <br />
-            <p><asp:Label ID="lblerror" runat="server" /></p>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <asp:FileUpload runat="server" ID="fupload" CssClass="custom-file-upload"/>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+            <div class="toolbar">
+                <div class="left-container">
+                    <div class="box">
+                        <p style = "font-size:x-large; color: #BB2647;"><strong>Complaints</strong></p>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <asp:FileUpload runat="server" ID="fupload" CssClass="custom-file-upload"/>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="box">
+                        <asp:Button runat="server" ID="processup" Text="Upload File" CssClass="logout-button" />
+                    </div>
+                    <!-- Add more elements as needed -->
+                </div>
+    
+            <div class="right-container">
+                <div class="box">
+                                <asp:DropDownList CssClass="custom-dropdown" ID="errortypelist" runat="server">
+                                    <asp:ListItem Text="All Records" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="WIP" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="New" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="Closed" Value="3"></asp:ListItem>
+                                    <asp:ListItem Text="Processed" Value="4"></asp:ListItem>
+                                    <asp:ListItem Text="Unprocessed" Value="5"></asp:ListItem>
+                                </asp:DropDownList>
+                </div>
+                <div class="box">
+                     <asp:Button ID="refresh" runat="server" Text="Show Records" CssClass="logout-button" OnClick="refresh_Click" />
+                    <p><asp:Label ID="lblerror" runat="server" /></p>
+                </div>
+                <!-- Add more elements as needed -->
+            </div>
+        </div>
         </div>
         <br />
-        <asp:Button runat="server" ID="processup" Text="Upload File" CssClass="logout-button" />
-    <%--<asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Please correct the following" ShowMessageBox="false" DisplayMode="BulletList" ShowSummary="true" BackColor="Snow" Width="450" ForeColor="Violet" Font-Size="Medium" Font-Italic="true"/>--%>
-        
 </p>
                         <div style="float: right;">
                              <div>
-            <asp:DropDownList CssClass="custom-dropdown" ID="errortypelist" runat="server">
-                <asp:ListItem Text="All Records" Value="0"></asp:ListItem>
-                <asp:ListItem Text="WIP" Value="1"></asp:ListItem>
-                <asp:ListItem Text="New" Value="2"></asp:ListItem>
-                <asp:ListItem Text="Closed" Value="3"></asp:ListItem>
-                <asp:ListItem Text="Processed" Value="4"></asp:ListItem>
-                <asp:ListItem Text="Unprocessed" Value="5"></asp:ListItem>
-            </asp:DropDownList>
-                                 <asp:Button ID="refresh" runat="server" Text="Show Records" CssClass="logout-button" OnClick="refresh_Click" />
-
+            
                             </div>
                         </div>
         <p style="text-align:right">
@@ -122,7 +160,11 @@
 
         </p>
  <div>
-     <asp:PlaceHolder ID = "PlaceHolder1" runat="server" />
+     <asp:PlaceHolder ID = "PlaceHolder1" runat="server" >
+         <div style="background-color: #f0f0f0; border-radius: 15px; overflow: hidden; color: #007BFF; font-size: 18px; font-weight: bold; margin-bottom: 10px;">
+
+            </div>
+     </asp:PlaceHolder>
  </div>
     </div>
 

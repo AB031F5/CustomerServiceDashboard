@@ -20,7 +20,7 @@
 .custom-file-upload:focus,
 .custom-file-upload:hover {
     background-color: #e0e0e0;
-    border-color: #999;
+    border-color: #BB2647;
 }
 
 .custom-dropdown {
@@ -35,12 +35,12 @@
 }
 
 .custom-dropdown:hover {
-    border-color: #007bff; /* Change border color on hover */
+    border-color: #BB2647; /* Change border color on hover */
 }
 
 .custom-dropdown:focus {
     outline: none; /* Remove the focus outline if needed */
-    border-color: #007bff; /* Change border color on focus */
+    border-color: #BB2647; /* Change border color on focus */
 }
     .table-container {
         height: 100%;
@@ -53,6 +53,30 @@
         border: 1px solid #ddd;
         padding: 8px;
     }
+            .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            background-color: #f0f0f0;
+            border-radius: 7px;
+            margin: 5px 5px;
+            position: sticky;
+            top: 0;
+        }
+        .left-container {
+            text-align: left;
+        }
+
+        .right-container {
+            text-align: right;
+        }
+
+
+        .box {
+            padding: 10px;
+            margin: 5px;
+        }
     </style>
     <script type="text/javascript">
         $(function () {
@@ -62,14 +86,22 @@
         });
     </script>  
     <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
-
-            <p style = "font-size:x-large; color: #800000;"><strong>MM Balance</strong></p>
-    <br />
-    <p><asp:Label ID="lblerroratmsg1" runat="server" /></p>
+     <div class="toolbar">
+        <div class="left-container">
+            <div class="box"><p style = "font-size:x-large; color: #BB2647;"><strong>MM Balance</strong></p></div>
+            <!-- Add more elements as needed -->
+        </div>
+    
+        <div class="right-container">
+            <div class="box"><asp:Label ID="lblerroratmsg1" runat="server" /></div>
+            <!-- Add more elements as needed -->
+        </div>
+    </div>
+    <p></p>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Please correct the following" ShowMessageBox="false" DisplayMode="BulletList" ShowSummary="true" BackColor="Snow" Width="450" ForeColor="Violet" Font-Size="Medium" Font-Italic="true"/>
-
+    <br />
     <div>
      <asp:PlaceHolder ID = "PlaceHolder12" runat="server" />
- </div>
+    </div>
 
 </asp:Content>

@@ -50,15 +50,6 @@ Partial Public Class Login
     Protected WithEvents testLogin As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Login1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Login1 As Global.System.Web.UI.WebControls.Login
-
-    '''<summary>
     '''ValidationSummary1 control.
     '''</summary>
     '''<remarks>
