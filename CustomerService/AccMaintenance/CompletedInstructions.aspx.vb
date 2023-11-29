@@ -58,30 +58,30 @@ Public Class CompletedInstructions
                             Dim messagedisplay As String = String.Format("file with {0} records has been succesfully uploaded", kout.Rows.Count.ToString())
                             lblerror.Text = messagedisplay
                             fileuploadhist2xx(fupload.FileName, Session("User_Name"), kout.Rows.Count)
-                            For j = 0 To kout.Rows.Count - 1
-                                Dim recepacct, recepphone, recepcase As String
-                                recepacct = vbNullString
-                                recepphone = vbNullString
-                                recepcase = vbNullString
-                                recepacct = kout.Rows(j)(3).ToString()
-                                recepcase = kout.Rows(j)(1).ToString()
-                                recepphone = InvokeServiceMTN(recepacct)
-                                If recepphone <> vbNullString Then
-                                    If recepphone.Substring(0, 1) = "0" Then
-                                        recepphone = "256" & recepphone.Substring(1, recepphone.Length - 1)
-                                    Else
-                                        recepphone = "256" & recepphone
-                                    End If
-                                    If recepphone.Length > 5 Then
-                                        'Dim sendstatus As String = sendsms(recepphone, msgout)
-                                        addcomstodb("SMS", recepphone, msgout, DateTime.Now, "Case Completion", recepcase, recepacct)
-                                    Else
-                                        addinvalid(recepacct, "Y", "N")
-                                    End If
-                                Else
-                                    addinvalid(recepacct, "Y", "N")
-                                End If
-                            Next
+                            'For j = 0 To kout.Rows.Count - 1
+                            '    Dim recepacct, recepphone, recepcase As String
+                            '    recepacct = vbNullString
+                            '    recepphone = vbNullString
+                            '    recepcase = vbNullString
+                            '    recepacct = kout.Rows(j)(3).ToString()
+                            '    recepcase = kout.Rows(j)(1).ToString()
+                            '    recepphone = InvokeServiceMTN(recepacct)
+                            '    If recepphone <> vbNullString Then
+                            '        If recepphone.Substring(0, 1) = "0" Then
+                            '            recepphone = "256" & recepphone.Substring(1, recepphone.Length - 1)
+                            '        Else
+                            '            recepphone = "256" & recepphone
+                            '        End If
+                            '        If recepphone.Length > 5 Then
+                            '            'Dim sendstatus As String = sendsms(recepphone, msgout)
+                            '            addcomstodb("SMS", recepphone, msgout, DateTime.Now, "Case Completion", recepcase, recepacct)
+                            '        Else
+                            '            addinvalid(recepacct, "Y", "N")
+                            '        End If
+                            '    Else
+                            '        addinvalid(recepacct, "Y", "N")
+                            '    End If
+                            'Next
                         Catch ex As Exception
                             lblerror.Text = ex.Message
                         End Try
@@ -97,7 +97,7 @@ Public Class CompletedInstructions
     Private Function ConvertDataTableToHTML2xx(dataTable As DataTable) As String
         Dim htmlStringBuilder As New StringBuilder()
 
-        htmlStringBuilder.AppendLine("<table id='table_id' class='display cell-border hover stripe' style='font-size: 11pt;font-family:Roboto; width:100%;border-radius:5px;overflow:hidden;'>")
+        htmlStringBuilder.AppendLine("<table id='table_id' class='display cell-border hover stripe' style='font-size: 11pt;font-family:Roboto; width:100%;border-radius:3px;overflow:hidden;'>")
 
         htmlStringBuilder.AppendLine("<thead>")
         htmlStringBuilder.AppendLine("<tr>")

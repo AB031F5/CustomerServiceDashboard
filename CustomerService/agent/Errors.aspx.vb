@@ -32,7 +32,16 @@
                         PlaceHolder1.Controls.Add(New Literal() With {
                           .Text = returnrecodsfs.ToString()
                           })
-                        lblerrorfails.Text = getmsgtablefs.Rows.Count.ToString() + " Records Returned"
+                        Dim returnMessage As String = ""
+                        If getmsgtablefs.Rows.Count = 0 Then
+                            returnMessage = "No Records to display"
+                        ElseIf getmsgtablefs.Rows.Count > 1500 Then
+                            returnMessage = getmsgtablefs.Rows.Count.ToString() + " Records Returned / Records limited to 2500 due to Browser Memory"
+                        ElseIf getmsgtablefs.Rows.Count > 0 And getmsgtablefs.Rows.Count < 2500 Then
+                            returnMessage = getmsgtablefs.Rows.Count.ToString() + " Records Returned"
+                        End If
+
+                        lblerrorfails.Text = returnMessage
                     End If
                 End Using
                 con_getfs.Close()

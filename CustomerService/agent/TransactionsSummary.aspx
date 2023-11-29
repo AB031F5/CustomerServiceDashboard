@@ -16,7 +16,7 @@
     width: 200px; 
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 14px;
     color: #333;
     background-color: #fff;
@@ -46,7 +46,7 @@
             align-items: center;
             padding: 5px;
             background-color: #f0f0f0;
-            border-radius: 7px;
+            border-radius: 5px;
             margin: 5px 5px;
             position: sticky;
             top: 0;
@@ -97,10 +97,10 @@
                                 <asp:ListItem Text="Successful" Value="4"></asp:ListItem>
                             </asp:DropDownList>
                                 &nbsp &nbsp
-                            <asp:Label runat="server">Start Date</asp:Label>
+                            <asp:Label runat="server">From</asp:Label>
                                 <asp:TextBox CssClass="custom-dropdown" ID="startddate" runat="server" Width="175px" TextMode="Date"></asp:TextBox>
                                 &nbsp &nbsp
-                            <asp:Label  runat="server" >End Date</asp:Label>
+                            <asp:Label  runat="server">To:</asp:Label>
                             <asp:TextBox CssClass="custom-dropdown" ID="enddate" runat="server" Width="175px" TextMode="Date"></asp:TextBox>
                             </p>
                         </div>

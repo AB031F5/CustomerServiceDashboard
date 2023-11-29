@@ -16,7 +16,7 @@
     /* Add styles as needed */
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #f8f8f8;
     color: #333;
     cursor: pointer;
@@ -26,26 +26,26 @@
 .custom-file-upload:focus,
 .custom-file-upload:hover {
     background-color: #e0e0e0;
-    border-color: #999;
+    border-color: #BB2647;
 }
 
 .custom-dropdown {
     width: 200px; /* Set the width as needed */
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 14px;
     color: #333;
     background-color: #fff;
     /* Add more styles as needed */
 }
 .custom-dropdown:hover {
-    border-color: #007bff; /* Change border color on hover */
+    border-color: #BB2647; /* Change border color on hover */
 }
 
 .custom-dropdown:focus {
     outline: none; /* Remove the focus outline if needed */
-    border-color: #007bff; /* Change border color on focus */
+    border-color: #BB2647; /* Change border color on focus */
 }
    .table-container {
         height: 100%;
@@ -64,7 +64,7 @@
             align-items: center;
             padding: 5px;
             background-color: #f0f0f0;
-            border-radius: 7px;
+            border-radius: 5px;
             margin: 5px 5px;
             position: sticky;
             top: 0;
@@ -112,13 +112,11 @@
                     <asp:TextBox CssClass="custom-dropdown" ID="searchstringone" runat="server" Width="175px"></asp:TextBox>
                     &nbsp &nbsp
                     <asp:RequiredFieldValidator ID="reqvalid1" runat="server" ControlToValidate="searchstringone" errormessage="Please input search field" ForeColor="Red" Text="*"></asp:RequiredFieldValidator>          
-                    <asp:Label ID="Label1" runat="server" AssociatedControlID="startddate">Start Date</asp:Label>
+                    <asp:Label ID="Label1" runat="server" AssociatedControlID="startddate">From</asp:Label>
                     <asp:TextBox CssClass="custom-dropdown" ID="startddate" runat="server" Width="175px" TextMode="Date"></asp:TextBox>
                     &nbsp &nbsp
-                    <asp:Label ID="Label2" runat="server" AssociatedControlID="searchstringone">End Date</asp:Label>
+                    <asp:Label ID="Label2" runat="server" AssociatedControlID="searchstringone">To:</asp:Label>
                     <asp:TextBox CssClass="custom-dropdown" ID="enddate" runat="server" Width="175px" TextMode="Date"></asp:TextBox>
-                                                        &nbsp &nbsp
-                                    <asp:CheckBox ID="download" CssClass="custom-checkbox" runat="server" Text="Save Data" Checked="false"/>
                 </p>
                             </div>
                             <br />

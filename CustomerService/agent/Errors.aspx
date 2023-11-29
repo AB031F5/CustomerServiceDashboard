@@ -8,7 +8,7 @@
     /* Add styles as needed */
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #f8f8f8;
     color: #333;
     cursor: pointer;
@@ -25,7 +25,7 @@
     width: 200px; /* Set the width as needed */
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 14px;
     color: #333;
     background-color: #fff;
@@ -46,7 +46,7 @@
             align-items: center;
             padding: 5px;
             background-color: #f0f0f0;
-            border-radius: 7px;
+            border-radius: 5px;
             margin: 5px 5px;
             position: sticky;
             top: 0;

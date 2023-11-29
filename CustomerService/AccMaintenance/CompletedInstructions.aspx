@@ -50,7 +50,7 @@
     /* Add styles as needed */
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #f8f8f8;
     color: #333;
     cursor: pointer;
@@ -68,7 +68,7 @@
     width: 200px; /* Set the width as needed */
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 14px;
     color: #333;
     background-color: #fff;
@@ -76,12 +76,12 @@
 }
 
 .custom-dropdown:hover {
-    border-color: #007bff; /* Change border color on hover */
+    border-color: #BB2647; /* Change border color on hover */
 }
 
 .custom-dropdown:focus {
     outline: none; /* Remove the focus outline if needed */
-    border-color: #007bff; /* Change border color on focus */
+    border-color: #BB2647; /* Change border color on focus */
 }
         .toolbar {
             display: flex;
@@ -89,7 +89,7 @@
             align-items: center;
             padding: 5px;
             background-color: #f0f0f0;
-            border-radius: 7px;
+            border-radius: 3px;
             margin: 5px 5px;
             position: sticky;
             top: 0;
@@ -113,9 +113,6 @@
     <div class=" page-holder d-flex align-items-center">
     <div class="container">
         <div style="text-align: left;">
-            
-            <br />
-            <br />
             <div class="toolbar">
                 <div class="left-container">
                     <div class="box">

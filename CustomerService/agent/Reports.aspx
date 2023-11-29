@@ -8,7 +8,7 @@
     /* Add styles as needed */
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #f8f8f8;
     color: #333;
     cursor: pointer;
@@ -26,7 +26,7 @@
     width: 200px; /* Set the width as needed */
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 14px;
     color: #333;
     background-color: #fff;
@@ -58,7 +58,7 @@
             align-items: center;
             padding: 5px;
             background-color: #f0f0f0;
-            border-radius: 7px;
+            border-radius: 5px;
             margin: 5px 5px;
             position: sticky;
             top: 0;
@@ -113,10 +113,10 @@
                                 <asp:TextBox CssClass="custom-dropdown" ID="searchstringone" runat="server" Width="175px"></asp:TextBox>
                                 &nbsp &nbsp
                                 <asp:RequiredFieldValidator ID="reqvalid1" runat="server" ControlToValidate="searchstringone" errormessage="Please input search field" ForeColor="Red" Text="*"></asp:RequiredFieldValidator>          
-                                <asp:Label ID="Label1" runat="server" AssociatedControlID="startddate">Start Date</asp:Label>
+                                <asp:Label ID="Label1" runat="server" AssociatedControlID="startddate">From</asp:Label>
                                 <asp:TextBox CssClass="custom-dropdown" ID="startddate" runat="server" Width="175px" TextMode="Date"></asp:TextBox>
                                 &nbsp &nbsp
-                                <asp:Label ID="Label2" runat="server" AssociatedControlID="searchstringone">End Date</asp:Label>
+                                <asp:Label ID="Label2" runat="server" AssociatedControlID="searchstringone">To:</asp:Label>
                                 <asp:TextBox CssClass="custom-dropdown" ID="enddate" runat="server" Width="175px" TextMode="Date"></asp:TextBox>
                             </p>
                         </div>

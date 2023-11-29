@@ -15,7 +15,7 @@ Public Class SendErrors
     Private Function ConvertDataTableToHTML3xxxSE(dataTable As DataTable) As String
         Dim htmlStringBuilder As New StringBuilder()
 
-        htmlStringBuilder.AppendLine("<table id='table_id3SE' class='display cell-border hover stripe' style='font-size: 11pt;font-family:Roboto; width:100%;border-radius:5px;overflow:hidden;'>")
+        htmlStringBuilder.AppendLine("<table id='table_id3SE' class='display cell-border hover stripe' style='font-size: 11pt;font-family:Roboto; width:100%;border-radius:3px;overflow:hidden;'>")
 
         htmlStringBuilder.AppendLine("<thead>")
         htmlStringBuilder.AppendLine("<tr>")

@@ -131,15 +131,6 @@ Partial Public Class SendMessages
     Protected WithEvents enddate As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''download control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents download As Global.System.Web.UI.WebControls.CheckBox
-
-    '''<summary>
     '''getlist control.
     '''</summary>
     '''<remarks>

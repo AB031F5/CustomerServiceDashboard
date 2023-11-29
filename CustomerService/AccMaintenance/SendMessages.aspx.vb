@@ -5,6 +5,8 @@ Imports System.Threading.Tasks
 Imports System.Windows.Forms
 Imports System.Xml
 Imports System.Web.UI.HtmlControls
+Imports MySql.Data.MySqlClient
+
 Public Class SendMessages
     Inherits System.Web.UI.Page
 
@@ -24,7 +26,7 @@ Public Class SendMessages
     Private Function ConvertDataTableToHTML2xxxSM(dataTable As DataTable) As String
         Dim htmlStringBuilder As New StringBuilder()
 
-        htmlStringBuilder.AppendLine("<table id='table_id2SM' class='display cell-border hover stripe' style='font-size: 11pt;font-family:Roboto; width:100%;border-radius:5px;overflow:hidden;'>")
+        htmlStringBuilder.AppendLine("<table id='table_id2SM' class='display cell-border hover stripe' style='font-size: 11pt;font-family:Roboto; width:100%;border-radius:3px;overflow:hidden;'>")
 
         htmlStringBuilder.AppendLine("<thead>")
         htmlStringBuilder.AppendLine("<tr>")
@@ -46,6 +48,9 @@ Public Class SendMessages
         Dim htmlString As String = htmlStringBuilder.ToString()
         Return htmlString
     End Function
+
+
+
     Protected Sub getlist_Click1(sender As Object, e As EventArgs) Handles getlist.Click
         Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
         Using con_get As New MySql.Data.MySqlClient.MySqlConnection(constr)
@@ -68,10 +73,6 @@ Public Class SendMessages
                               .Text = returnrecods.ToString()
                               })
                             lblerroratmsg.Text = getmsgtable.Rows.Count.ToString() + " Records Returned"
-                            If download.Checked = True Then
-                                Dim fings As String
-                                fings = savedatatable(getmsgtable)
-                            End If
                         End If
                     End Using
                 ElseIf searchmsgs.SelectedItem.Text = "Account Number" Then
@@ -91,10 +92,6 @@ Public Class SendMessages
                               .Text = returnrecods2.ToString()
                               })
                             lblerroratmsg.Text = getmsgtable2.Rows.Count.ToString() + " Records Returned"
-                            If download.Checked = True Then
-                                Dim fings As String
-                                fings = savedatatable(getmsgtable2)
-                            End If
                         End If
                     End Using
                 ElseIf searchmsgs.SelectedItem.Text = "Date Range" Then
@@ -114,10 +111,6 @@ Public Class SendMessages
                               .Text = returnrecods2.ToString()
                               })
                             lblerroratmsg.Text = getmsgtable2.Rows.Count.ToString() + " Records Returned"
-                            If download.Checked = True Then
-                                Dim fings As String
-                                fings = savedatatable(getmsgtable2)
-                            End If
                         End If
                     End Using
                 End If
@@ -130,6 +123,54 @@ Public Class SendMessages
         End Using
     End Sub
 
+    Private Function RunReport(stProcedure As String, stDate As String, edDate As String, mno As String, status As String) As DataTable
+        Dim connectionString As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
+        Dim storedProcedureName As String = stProcedure
+        Dim resultDataTable As New DataTable()
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+            Using command As New MySqlCommand()
+                command.CommandType = CommandType.StoredProcedure
+                command.CommandText = storedProcedureName
+                command.Connection = connection
+                command.Parameters.AddWithValue("StartDate", stDate)
+                command.Parameters.AddWithValue("EndDate", edDate)
+                command.Parameters.AddWithValue("caseNumber", mno)
+                command.Parameters.AddWithValue("accNumber", status)
+                Using reader As MySqlDataReader = command.ExecuteReader()
+                    resultDataTable.Load(reader)
+                End Using
+                connection.Close()
+                'connection.Dispose()
+            End Using
+        End Using
+        Return resultDataTable
+    End Function
+    Private Function ConvertDataTableToHtml2(dataTable As DataTable) As String
+        Dim htmlStringBuilder As New StringBuilder()
+
+        htmlStringBuilder.AppendLine("<table id='table_id2' class='display cell-border hover stripe' style='font-size: 11pt;font-family:Roboto; width:100%;border-radius:5px;overflow:hidden;'>")
+
+        htmlStringBuilder.AppendLine("<thead>")
+        htmlStringBuilder.AppendLine("<tr>")
+        For Each column As DataColumn In dataTable.Columns
+            htmlStringBuilder.AppendFormat("<th  class='tablesorter' style='background-color:#BB2647; color: white;border: 0.5px solid #f0f0f0'>{0}</th>", column.ColumnName)
+        Next
+        htmlStringBuilder.AppendLine("</tr>")
+        htmlStringBuilder.AppendLine("</thead>")
+        For Each row As DataRow In dataTable.Rows
+            htmlStringBuilder.AppendLine("<tr>")
+            For Each value As Object In row.ItemArray
+                htmlStringBuilder.AppendFormat("<td>{0}</td>", value)
+            Next
+            htmlStringBuilder.AppendLine("</tr>")
+        Next
+
+        htmlStringBuilder.AppendLine("</table>")
+
+        Dim htmlString As String = htmlStringBuilder.ToString()
+        Return htmlString
+    End Function
     Protected Function savedatatable(ByVal dt As DataTable) As String
         'Add the Header row for CSV file.
         Dim csv As String = String.Empty
